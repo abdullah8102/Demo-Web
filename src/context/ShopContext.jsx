@@ -1,6 +1,9 @@
-import React, { createContext, useState, useEffect } from "react";
+import React, { createContext, useContext, useState, useEffect } from "react";
 
 export const ShopContext = createContext();
+
+// Yeh line miss ho gayi thi jiski wajah se error aaraha tha:
+export const useShop = () => useContext(ShopContext);
 
 export const ShopProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
@@ -71,7 +74,7 @@ export const ShopProvider = ({ children }) => {
 
   const isWishlisted = (id) => wishlist.some((item) => item.id === id);
 
-  // Delivery Logic
+  // Delivery Logic (Rs. 2,999 se zyada par Free, warna Rs. 249)
   const subtotal = cart.reduce(
     (sum, item) => sum + item.price * item.quantity,
     0,

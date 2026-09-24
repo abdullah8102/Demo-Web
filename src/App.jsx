@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import CartDrawer from "./components/CartDrawer";
@@ -9,17 +8,20 @@ import { ShopProvider } from "./context/ShopContext";
 
 function App() {
   const [isCartOpen, setIsCartOpen] = useState(false);
+  const [page, setPage] = useState("home");
 
   return (
     <ShopProvider>
       <div className="app">
-        <Navbar setIsCartOpen={setIsCartOpen} />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/shop" element={<Shop />} />
-        </Routes>
+        <Navbar setIsCartOpen={setIsCartOpen} setPage={setPage} />
+        {page === "shop" ? <Shop /> : <Home setPage={setPage} />}
         <Footer />
-        <CartDrawer isOpen={isCartOpen} setIsOpen={setIsCartOpen} />
+        {/* Yahan setPage add kiya hai */}
+        <CartDrawer
+          isOpen={isCartOpen}
+          setIsOpen={setIsCartOpen}
+          setPage={setPage}
+        />
       </div>
     </ShopProvider>
   );

@@ -1,9 +1,8 @@
 import React from "react";
 import { X, Plus, Minus, Trash2, ShoppingBag } from "lucide-react";
 import { useShop } from "../context/ShopContext";
-import { Link } from "react-router-dom";
 
-const CartDrawer = ({ isOpen, setIsOpen }) => {
+const CartDrawer = ({ isOpen, setIsOpen, setPage }) => {
   const { cart, removeFromCart, updateQuantity, subtotal, deliveryFee, total } =
     useShop();
 
@@ -32,14 +31,16 @@ const CartDrawer = ({ isOpen, setIsOpen }) => {
               style={{ margin: "0 auto 1rem", color: "#CBD5E0" }}
             />
             <p>Your cart is empty</p>
-            <Link
-              to="/shop"
-              onClick={() => setIsOpen(false)}
+            <button
+              onClick={() => {
+                setPage("shop");
+                setIsOpen(false);
+              }}
               className="btn btn-primary"
               style={{ marginTop: "1rem" }}
             >
               Start Shopping
-            </Link>
+            </button>
           </div>
         ) : (
           <>

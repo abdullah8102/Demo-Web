@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import {
   ShieldCheck,
   Truck,
@@ -13,7 +12,7 @@ import {
 import { products } from "../data/products";
 import ProductCard from "../components/ProductCard";
 
-const Home = () => {
+const Home = ({ setPage }) => {
   const categories = [
     { icon: <Baby />, name: "Baby Care" },
     { icon: <Droplets />, name: "Baby Hygiene" },
@@ -33,18 +32,24 @@ const Home = () => {
               tomorrow. Trusted by thousands of families across Pakistan.
             </p>
             <div className="hero-buttons">
-              <Link to="/shop" className="btn btn-primary">
+              <button
+                onClick={() => setPage("shop")}
+                className="btn btn-primary"
+              >
                 Shop Now
-              </Link>
-              <Link to="/categories" className="btn btn-outline">
+              </button>
+              <button
+                onClick={() => setPage("shop")}
+                className="btn btn-outline"
+              >
                 Explore Categories
-              </Link>
+              </button>
             </div>
           </div>
           <div className="hero-image">
             <img
-              src="https://images.unsplash.com/photo-1515488073748-ede8d69f0e4f?auto=format&fit=crop&w=800&q=80"
-              alt="Mother holding baby"
+              src="https://z-cdn-media.chatglm.cn/files/4642138f-409b-481a-be58-4354a1c1b488.png?auth_key=1890234139-fdf8be87ebd24d438f80f2c42a76645f-0-b033748ae0e36b5c2a624bbdd6f5a518"
+              alt="Parents holding baby"
             />
           </div>
         </div>
@@ -62,7 +67,12 @@ const Home = () => {
           </div>
           <div className="category-grid">
             {categories.map((cat, i) => (
-              <div className="category-card" key={i}>
+              <div
+                className="category-card"
+                key={i}
+                onClick={() => setPage("shop")}
+                style={{ cursor: "pointer" }}
+              >
                 <div className="category-icon">{cat.icon}</div>
                 <h3 style={{ fontSize: "1.1rem" }}>{cat.name}</h3>
                 <p style={{ fontSize: "0.8rem", color: "var(--text-light)" }}>
@@ -87,9 +97,9 @@ const Home = () => {
             ))}
           </div>
           <div style={{ textAlign: "center", marginTop: "3rem" }}>
-            <Link to="/shop" className="btn btn-primary">
+            <button onClick={() => setPage("shop")} className="btn btn-primary">
               View All Products
-            </Link>
+            </button>
           </div>
         </div>
       </section>

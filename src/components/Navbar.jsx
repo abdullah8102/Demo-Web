@@ -1,41 +1,105 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import { Search, Heart, ShoppingBag, User, Menu } from "lucide-react";
+import React from "react";
+import { Search, Heart, ShoppingBag, User } from "lucide-react";
 
-const Navbar = ({ setIsCartOpen }) => {
-  const [search, setSearch] = useState("");
-
+const Navbar = ({ setIsCartOpen, setPage }) => {
   return (
     <header className="header">
       <div className="container navbar">
-        <Link to="/" className="logo">
+        <div
+          className="logo"
+          onClick={() => setPage("home")}
+          style={{ cursor: "pointer" }}
+        >
           <span className="logo-main">mommie</span>
           <span className="logo-sub">BABY CARE</span>
-        </Link>
+        </div>
 
         <nav className="nav-links">
-          <Link to="/">Home</Link>
-          <Link to="/shop">Shop</Link>
-          <Link to="/categories">Categories</Link>
-          <Link to="/mother-care">Mother Care</Link>
-          <Link to="/baby-care">Baby Care</Link>
-          <Link to="/bundles">Bundles</Link>
-          <Link to="/about">About</Link>
+          <button
+            onClick={() => setPage("home")}
+            style={{
+              background: "none",
+              border: "none",
+              cursor: "pointer",
+              fontSize: "0.9rem",
+              fontWeight: 500,
+            }}
+          >
+            Home
+          </button>
+          <button
+            onClick={() => setPage("shop")}
+            style={{
+              background: "none",
+              border: "none",
+              cursor: "pointer",
+              fontSize: "0.9rem",
+              fontWeight: 500,
+            }}
+          >
+            Shop
+          </button>
+          <button
+            style={{
+              background: "none",
+              border: "none",
+              cursor: "pointer",
+              fontSize: "0.9rem",
+              fontWeight: 500,
+            }}
+          >
+            Categories
+          </button>
+          <button
+            style={{
+              background: "none",
+              border: "none",
+              cursor: "pointer",
+              fontSize: "0.9rem",
+              fontWeight: 500,
+            }}
+          >
+            Mother Care
+          </button>
+          <button
+            style={{
+              background: "none",
+              border: "none",
+              cursor: "pointer",
+              fontSize: "0.9rem",
+              fontWeight: 500,
+            }}
+          >
+            Baby Care
+          </button>
+          <button
+            style={{
+              background: "none",
+              border: "none",
+              cursor: "pointer",
+              fontSize: "0.9rem",
+              fontWeight: 500,
+            }}
+          >
+            Bundles
+          </button>
+          <button
+            style={{
+              background: "none",
+              border: "none",
+              cursor: "pointer",
+              fontSize: "0.9rem",
+              fontWeight: 500,
+            }}
+          >
+            About
+          </button>
         </nav>
 
         <div className="nav-actions">
-          <div style={{ position: "relative" }}>
-            <input
-              type="text"
-              placeholder="Search..."
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}
-              style={{ display: "none" }} // Hidden for simplicity in header
-            />
-            <button className="icon-btn">
-              <Search size={20} />
-            </button>
-          </div>
+          <button className="icon-btn">
+            <Search size={20} />
+          </button>
           <button className="icon-btn">
             <User size={20} />
           </button>
